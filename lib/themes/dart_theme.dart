@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyracleDesignTheme {
   ThemeData dark = ThemeData.dark().copyWith(
-    primaryColor: Color(0xFF373856),
-    scaffoldBackgroundColor: Color(0xFF363568),
-    accentColor: Color(0xFFFF2E95),
+    primaryColor: Color(0xFF101639),
+    scaffoldBackgroundColor: Color(0xFF0C1234),
+    accentColor: Color(0xFFFF0067),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: Color(0xFFFF2E95),
       foregroundColor: Colors.white,

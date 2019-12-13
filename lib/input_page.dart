@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const double heightOfBottomBar = 80.0;
-const activeCardColor = Color(0xFF404372);
+const inActiveCardColor = Color(0xFF272A4E);
+const activeCardColor = Color(0xFF141A3C);
 const bottomBarColor = Color(0xFFFF2E95);
 
 class InputPage extends StatefulWidget {
@@ -25,12 +26,15 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(children: [
               Expanded(
-                child: ReusableCard(
-                  color: activeCardColor,
-                  child: IconContentWidget(
-                    icon: FontAwesomeIcons.mars,
-                    label: "Male",
-                    color: Color(0xFFD3D3D3),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: ReusableCard(
+                    color: inActiveCardColor,
+                    child: IconContentWidget(
+                      icon: FontAwesomeIcons.mars,
+                      label: "Male",
+                      color: Color(0xFFD3D3D3),
+                    ),
                   ),
                 ),
               ),
