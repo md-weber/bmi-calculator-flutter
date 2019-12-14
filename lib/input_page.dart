@@ -8,12 +8,16 @@ const inActiveCardColor = Color(0xFF272A4E);
 const activeCardColor = Color(0xFF141A3C);
 const bottomBarColor = Color(0xFFFF2E95);
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +31,15 @@ class _InputPageState extends State<InputPage> {
             child: Row(children: [
               Expanded(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
                   child: ReusableCard(
-                    color: inActiveCardColor,
+                    color: selectedGender == Gender.male
+                        ? activeCardColor
+                        : inActiveCardColor,
                     child: IconContentWidget(
                       icon: FontAwesomeIcons.mars,
                       label: "Male",
@@ -39,12 +49,21 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Expanded(
-                child: ReusableCard(
-                  color: activeCardColor,
-                  child: IconContentWidget(
-                    icon: FontAwesomeIcons.venus,
-                    label: "Female",
-                    color: Color(0xFFD3D3D3),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  child: ReusableCard(
+                    color: selectedGender == Gender.female
+                        ? activeCardColor
+                        : inActiveCardColor,
+                    child: IconContentWidget(
+                      icon: FontAwesomeIcons.venus,
+                      label: "Female",
+                      color: Color(0xFFD3D3D3),
+                    ),
                   ),
                 ),
               )
