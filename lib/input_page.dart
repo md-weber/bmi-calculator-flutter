@@ -2,11 +2,7 @@ import 'package:bmi_calculator/icon_content_widget.dart';
 import 'package:bmi_calculator/reusable_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const double heightOfBottomBar = 80.0;
-const inActiveCardColor = Color(0xFF272A4E);
-const activeCardColor = Color(0xFF141A3C);
-const bottomBarColor = Color(0xFFFF2E95);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -37,12 +33,11 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   color: selectedGender == Gender.male
-                      ? activeCardColor
-                      : inActiveCardColor,
+                      ? kActiveCardColor
+                      : kInActiveCardColor,
                   child: IconContentWidget(
                     icon: FontAwesomeIcons.mars,
                     label: "Male",
-                    color: Color(0xFFD3D3D3),
                   ),
                 ),
               ),
@@ -54,12 +49,11 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   color: selectedGender == Gender.female
-                      ? activeCardColor
-                      : inActiveCardColor,
+                      ? kActiveCardColor
+                      : kInActiveCardColor,
                   child: IconContentWidget(
                     icon: FontAwesomeIcons.venus,
                     label: "Female",
-                    color: Color(0xFFD3D3D3),
                   ),
                 ),
               )
@@ -68,25 +62,38 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(children: [
               Expanded(
-                child: ReusableCard(color: activeCardColor),
+                child: ReusableCard(
+                  color: kActiveCardColor,
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "HEIGHT",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: kLabelColor,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ]),
           ),
           Expanded(
             child: Row(children: [
               Expanded(
-                child: ReusableCard(color: activeCardColor),
+                child: ReusableCard(color: kActiveCardColor),
               ),
               Expanded(
-                child: ReusableCard(color: activeCardColor),
+                child: ReusableCard(color: kActiveCardColor),
               )
             ]),
           ),
           Container(
             width: double.infinity,
-            height: heightOfBottomBar,
+            height: kHeightOfBottomBar,
             margin: EdgeInsets.only(top: 10.0),
-            color: bottomBarColor,
+            color: kBottomBarColor,
           )
         ],
       ),

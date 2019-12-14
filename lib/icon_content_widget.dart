@@ -1,12 +1,11 @@
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
 class IconContentWidget extends StatelessWidget {
   final IconData icon;
   final String label;
-  final Color color;
 
-  const IconContentWidget(
-      {Key key, @required this.icon, @required this.label, this.color})
+  const IconContentWidget({Key key, @required this.icon, @required this.label})
       : super(key: key);
 
   @override
@@ -24,7 +23,7 @@ class IconContentWidget extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 18.0,
-            color: color,
+            color: kLabelColor,
           ),
         )
       ],
