@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/icon_content_widget.dart';
 import 'package:bmi_calculator/reusable_card_widget.dart';
+import 'package:bmi_calculator/single_Value_Card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
@@ -13,6 +14,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
+  int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +69,41 @@ class _InputPageState extends State<InputPage> {
                 child: ReusableCard(
                   color: kActiveCardColor,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
                         "HEIGHT",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: kLabelColor,
+                        style: kLabelTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: <Widget>[
+                          Text(
+                            height.toString(),
+                            style: kHeavyFontStyle,
+                          ),
+                          Text("cm"),
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: Colors.white,
+                          inactiveTrackColor: Color(0xFF8D8E98),
+                          thumbColor: Colors.pink,
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        ),
+                        child: Slider(
+                          value: height.toDouble(),
+                          min: 120,
+                          max: 220,
+                          onChanged: (double value) {
+                            setState(() {
+                              height = value.round();
+                            });
+                          },
                         ),
                       )
                     ],
@@ -82,10 +115,41 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(children: [
               Expanded(
-                child: ReusableCard(color: kActiveCardColor),
+                child: ReusableCard(
+                    color: kActiveCardColor,
+                    child: SingleValueCard(
+                      title: "Weight".toUpperCase(),
+                      value: weight,
+                      onDecrease: () {
+                        setState(() {
+                          weight--;
+                        });
+                      },
+                      onIncrease: () {
+                        setState(() {
+                          weight++;
+                        });
+                      },
+                    )),
               ),
               Expanded(
-                child: ReusableCard(color: kActiveCardColor),
+                child: ReusableCard(
+                  color: kActiveCardColor,
+                  child: SingleValueCard(
+                    title: "Age".toUpperCase(),
+                    value: age,
+                    onDecrease: () {
+                      setState(() {
+                        age--;
+                      });
+                    },
+                    onIncrease: () {
+                      setState(() {
+                        age++;
+                      });
+                    },
+                  ),
+                ),
               )
             ]),
           ),
