@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/icon_content_widget.dart';
+import 'package:bmi_calculator/result_page.dart';
 import 'package:bmi_calculator/reusable_card_widget.dart';
 import 'package:bmi_calculator/single_Value_Card.dart';
 import 'package:flutter/material.dart';
@@ -153,11 +154,24 @@ class _InputPageState extends State<InputPage> {
               )
             ]),
           ),
-          Container(
-            width: double.infinity,
-            height: kHeightOfBottomBar,
-            margin: EdgeInsets.only(top: 10.0),
-            color: kBottomBarColor,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultPage()));
+            },
+            child: Container(
+              child: Center(
+                child: Text(
+                  "Calculate".toUpperCase(),
+                  style: kLargeButtonTextStyle,
+                ),
+              ),
+              width: double.infinity,
+              height: kHeightOfBottomBar,
+              margin: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(bottom: 20.0),
+              color: kBottomBarColor,
+            ),
           )
         ],
       ),
